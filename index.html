@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pradeepraj | Biomedical Engineering Portfolio</title>
+    <style>
+        /* Base Reset & Typography */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #0a8494;       /* Deep Medical Teal */
+            --primary-dark: #075f6b;  /* Dark Teal for hover states */
+            --secondary: #1e293b;     /* Slate Blue for text & dark backgrounds */
+            --accent: #38bdf8;        /* Electric Cyan for highlight pills */
+            --bg-light: #f8fafc;      /* Crisp Off-White */
+            --bg-pure: #ffffff;       /* Pure White for cards */
+            --border-color: #e2e8f0;  /* Subtle grey borders */
+            --text-main: #334155;     /* Dark Charcoal body text */
+            --text-muted: #64748b;    /* Slate grey for subtext */
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Layout Container */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 100%);
+            padding: 90px 0 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(10, 132, 148, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: var(--secondary);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero-tagline {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            max-width: 650px;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Section Global Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-light {
+            background-color: var(--bg-pure);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Projects Grid Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.05);
+            border-color: rgba(10, 132, 148, 0.3);
+        }
+
+        .project-type {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .project-card h3 {
+            font-size: 20px;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: var(--bg-pure);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Dual Track Layout for Experience and Education */
+        .dual-track {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .dual-track {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            nav ul {
+                gap: 16px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+        /* Timeline Items */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary);
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .timeline-institution {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        /* Education Highlight block */
+        .education-block {
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .ed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .ed-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .ed-score {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: rgba(10, 132, 148, 0.08);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .ed-spec {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Skills Layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .skills-card {
+            background-color: var(--bg-pure);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .skills-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skills-list li {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skills-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: #94a3b8;
+            padding: 40px 0;
+            font-size: 14px;
+            border-top: 1px solid #334155;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-dot"></div>Pradeepraj
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="badge">Biomedical Engineering Student</span>
+            <h1>Developing Technical Solutions for Clinical Environments</h1>
+            <p class="hero-tagline">
+                Passionate about bridging the gap between embedded systems, physiological signal analysis, and customized analytical applications to advance decentralized patient care frameworks.
+            </p>
+            <div class="meta-info">
+                <div class="meta-item">
+                    <strong>Languages:</strong> Tamil, English
+                </div>
+                <div class="meta-item">
+                    <strong>Interests:</strong> IoMT, Biosignal Acquisition, Clinical Software
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-light">
+        <div class="container">
+            <h2 class="section-title">Academic & Technical Projects</h2>
+            <p class="section-subtitle">A curated look at engineering implementations addressing medical diagnostics, monitoring, and computational oncology.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <div class="project-type">Biosignal Acquisition</div>
+                        <h3>Portable Digital PCG Acquisition System</h3>
+                        <p>A compact system engineered to capture, amplify, and condition phonocardiogram (heart sound) signals. Designed to clean acoustic noise spikes, facilitating clear diagnostic listening outputs suitable for decentralized primary care screenings.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Signal Processing</span>
+                        <span class="tag">Hardware Filtering</span>
+                        <span class="tag">Medical Device Design</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-type">Computational Oncology</div>
+                        <h3>Stem Cell Oncology Recommendation Engine</h3>
+                        <p>A database-backed analytical workflow focused on medical data processing. The framework acts as a recommendation prototype parsing user-inputted oncology markers and cancer stages to map personalized stem cell medical profiles.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Data Analysis</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-type">Internet of Medical Things</div>
+                        <h3>Automated IV Drip Monitoring System</h3>
+                        <p>An intelligent medical monitoring prototype using embedded sensors to track fluid levels and flow metrics within intravenous lines in real time, alerting nursing terminals dynamically when standard operational bounds shift.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Embedded Systems</span>
+                        <span class="tag">Sensor Bus Integration</span>
+                        <span class="tag">IoMT Prototype</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container dual-track">
+            
+            <div>
+                <h2 class="section-title">Professional Training</h2>
+                <p class="section-subtitle" style="margin-bottom: 24px;">Hands-on exposure to clinical operations and technical organizations.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">Technical Intern</div>
+                        <div class="timeline-institution">Intellect Design Arena</div>
+                        <div class="timeline-date">Duration: 2 Months</div>
+                        <p class="timeline-desc">Gained comprehensive exposure to enterprise system workflows, structural logic, data organization platforms, and operational development cycles.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-title">Clinical Biomedical Intern</div>
+                        <div class="timeline-institution">Bharath Hospital</div>
+                        <div class="timeline-date">Duration: 15 Days</div>
+                        <p class="timeline-desc">Completed field exposure inside clinical workflows, observing biomedical equipment management pipelines, healthcare operations, and equipment calibration routines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="section-title">Academic Profile</h2>
+                <p class="section-subtitle" style="margin-bottom: 24px;">Current and historical tracking of academic achievements.</p>
+                
+                <div class="education-block">
+                    <div class="ed-header">
+                        <div class="ed-title">B.Tech in Biomedical Engineering</div>
+                        <div class="ed-score">9.05 CGPA</div>
+                    </div>
+                    <div class="ed-spec">Sathyabama Institute of Science and Technology (Current - up to Semester 3)</div>
+                </div>
+
+                <div class="education-block">
+                    <div class="ed-header">
+                        <div class="ed-title">Class 12 (Higher Secondary)</div>
+                        <div class="ed-score">72%</div>
+                    </div>
+                    <div class="ed-spec">Pure Science & Computer Science Stream (Physics, Chemistry, CS)</div>
+                </div>
+
+                <div class="education-block">
+                    <div class="ed-header">
+                        <div class="ed-title">Class 10 (Secondary School)</div>
+                        <div class="ed-score">91%</div>
+                    </div>
+                    <div class="ed-spec">General Sciences & Mathematics Foundation</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="section-light">
+        <div class="container">
+            <h2 class="section-title">Technical Proficiencies</h2>
+            <p class="section-subtitle">Core toolsets, programming frameworks, and focus domains compiled across my academic study.</p>
+            
+            <div class="skills-grid">
+                <div class="skills-card">
+                    <h4>Software & Data</h4>
+                    <ul class="skills-list">
+                        <li>Python</li>
+                        <li>MySQL</li>
+                        <li>Data Handling Logic</li>
+                    </ul>
+                </div>
+                <div class="skills-card">
+                    <h4>Hardware & Controls</h4>
+                    <ul class="skills-list">
+                        <li>C Programming (Beginner)</li>
+                        <li>Embedded System Principles</li>
+                        <li>Sensor Signal Routing</li>
+                    </ul>
+                </div>
+                <div class="skills-card">
+                    <h4>Biomedical Domains</h4>
+                    <ul class="skills-list">
+                        <li>Biosignal Acquisition</li>
+                        <li>Analog Conditioning Circuits</li>
+                        <li>Clinical Workflow Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <p>&copy; 2026 Pradeepraj. Built for Biomedical Engineering & Healthcare Tech.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#projects">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
